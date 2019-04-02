@@ -1,10 +1,16 @@
 'use strict';
 
-function getDogImage() {
-  fetch('https://dog.ceo/api/breeds/image/random')
+function getDogImage(dogNum) {
+
+
+  fetch('https://dog.ceo/api/breeds/image/random/'+dogNum)
     .then(response => response.json())
-    .then(responseJson => 
-      displayResults(responseJson))
+    .then(responseJson => {
+
+    
+      //displayResults(responseJson);
+      console.log(responseJson);
+      })
     .catch(error => alert('Something went wrong. Try again later.'));
 }
 
@@ -22,12 +28,12 @@ function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     const dogNum = $('.js-dog-num-input').val();
-    console.log(dogNum);
+   // console.log(dogNum);
     // Fix this later
     if (dogNum < 1 || dogNum > 50) {
       throw new Error('Please choose between 1 and 50 dogs');
     }
-    getDogImage();
+    getDogImage(dogNum);
   });
 }
 
