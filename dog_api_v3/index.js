@@ -4,8 +4,12 @@ function getDogImage(dogBreed) {
   fetch('https://dog.ceo/api/breed/' + dogBreed + '/images/random')
     .then(response => response.json())
     .then(responseJson => {
-
-      displayResults(responseJson);
+      if (responseJson.status === "error") {
+        $('.results-img').replaceWith(`<span class="results-img">Error: ${responseJson.message}<span>`);
+      }
+      else {
+        displayResults(responseJson);
+      }
       console.log(responseJson);
       })
     .catch(error => alert('Something went wrong. Try again later.'));
@@ -28,9 +32,6 @@ function watchForm() {
     const dogBreed = $('.js-dog-num-input').val();
    // console.log(dogNum);
     // Fix this later
-    if (dogBreed < 1 || dogBreed > 50) {
-      throw new Error('Please choose between 1 and 50 dogs');
-    }
     getDogImage(dogBreed);
   });
 }
