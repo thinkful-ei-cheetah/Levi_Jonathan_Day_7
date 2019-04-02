@@ -18,12 +18,12 @@ function displayResults(responseJson) {
    let imagesString = '';
     for (let i=0; i<responseJson.message.length; i++)
     {
-      imagesString += `<img src="${responseJson.message[i]}" class="results-img">`;
+      imagesString += `<img src="${responseJson.message[i]}">`;
     }
 
-    console.log(imagesString)
+    console.log(imagesString);
 
-  $('.results-img').replaceWith(imagesString);
+  $('.js-img-holder').html(imagesString);
 
   //display the results section
   $('.results').removeClass('hidden');
