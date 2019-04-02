@@ -12,8 +12,10 @@
     <div class="container">
         <h1>Dog API: A Simple Example</h1>
 
-        <form>
-          <input type="submit" value="Get a dog pic!">
+        <form id="dog-form">
+          <label for="dog-num-input">Get a dog pic!</label>
+          <input type="text" name="dog-num-input" class="js-dog-num-input" value="3" required>
+          <button type="submit">Submit</button>
         </form>
         <section class="results hidden">
           <h2>Look at this dog!</h2>

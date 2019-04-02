@@ -13,7 +13,7 @@ function displayResults(responseJson) {
   //replace the existing image with the new one
   $('.results-img').replaceWith(
     `<img src="${responseJson.message}" class="results-img">`
-  )
+  );
   //display the results section
   $('.results').removeClass('hidden');
 }
@@ -21,6 +21,12 @@ function displayResults(responseJson) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
+    const dogNum = $('.js-dog-num-input').val();
+    console.log(dogNum);
+    // Fix this later
+    if (dogNum < 1 || dogNum > 50) {
+      throw new Error('Please choose between 1 and 50 dogs');
+    }
     getDogImage();
   });
 }
