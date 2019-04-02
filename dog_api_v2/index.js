@@ -7,15 +7,23 @@ function getDogImage(dogNum) {
     .then(response => response.json())
     .then(responseJson => {
 
-     // displayResults(responseJson);
-      console.log(responseJson)
+      displayResults(responseJson);
+      //console.log(responseJson);
       })
     .catch(error => alert('Something went wrong. Try again later.'));
 }
 
 function displayResults(responseJson) {
+  /// console.log(responseJson.message);
+   let imagesString = '';
+    for (let i=0; i<responseJson.message.length; i++)
+    {
+      imagesString += `<img src="${responseJson.message[i]}" class="results-img">`;
+    }
 
-  $('.results-img').replaceWith(`<img src="${responseJson.message}" class="results-img">`);
+    console.log(imagesString)
+
+  $('.results-img').replaceWith(imagesString);
 
   //display the results section
   $('.results').removeClass('hidden');
